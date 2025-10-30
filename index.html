@@ -202,6 +202,21 @@
       font-size: 0.7rem;
       font-weight: bold;
     }
+    .cart-count2 {
+      position: absolute;
+      top: -5px;
+      right: 175px;
+      background: var(--accent);
+      color: white;
+      border-radius: 50%;
+      width: 18px;
+      height: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: bold;
+    }
 
     .cart-action {
       position: relative;
@@ -304,9 +319,12 @@
     }
 
     .hero-image img {
-      max-width: 100%;
       border-radius: 10px;
       box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        max-width: 60%;
+      max-height: 60%;
+      object-fit: contain;
+      transition: var(--transition);
     }
 
     /* Products Section */
@@ -376,6 +394,8 @@
       align-items: center;
       justify-content: center;
       background: #f9f9f9;
+        padding: 10px; /* Reduced padding */
+
     }
 
     [data-theme="dark"] .product-image {
@@ -383,8 +403,8 @@
     }
 
     .product-image img {
-      max-width: 80%;
-      max-height: 80%;
+      max-width: 120%;
+      max-height: 120%;
       object-fit: contain;
       transition: var(--transition);
     }
@@ -399,9 +419,9 @@
 
     .product-title {
       font-size: 1rem;
-      margin-bottom: 8px;
+      margin-bottom: 5px;
       color: var(--text);
-      height: 40px;
+      height: 45px;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 2;
@@ -411,12 +431,13 @@
     .product-rating {
       display: flex;
       align-items: center;
-      margin-bottom: 10px;
+      margin-bottom: 1px;
     }
 
     .stars {
       color: #ffc107;
       margin-right: 5px;
+      font-size: 12px;
     }
 
     .rating-count {
@@ -1111,6 +1132,7 @@
       padding: 10px 0;
     }
 
+
     .mobile-nav-item {
       display: flex;
       flex-direction: column;
@@ -1177,6 +1199,9 @@
       .brand {
         order: 1;
       }
+      .cart-count2{
+        right: 200px;
+      }
 
       .mobile-menu-btn {
         display: block;
@@ -1190,7 +1215,7 @@
       }
 
       .header-actions {
-        order: 3;
+        display: none;
       }
 
       .nav-links {
@@ -1267,7 +1292,9 @@
       .hero-content p {
         font-size: 1rem;
       }
-
+  .cart-count2{
+        right: 150px;
+      }
       .section-title {
         font-size: 1.5rem;
         flex-direction: column;
@@ -1280,7 +1307,7 @@
       }
 
       .header-actions {
-        gap: 10px;
+display: none;
       }
 
       .header-action span {
@@ -1313,15 +1340,16 @@
       .hero-badge {
         font-size: 0.8rem;
       }
+        .cart-count2{
+        right: 100px;
+      }
 
       .btn-primary, .btn-secondary {
         padding: 8px 12px;
         font-size: 0.9rem;
       }
 
-      .mobile-nav-item span {
-        display: none;
-      }
+      
 
       .mobile-nav-item i {
         margin-bottom: 0;
@@ -1356,7 +1384,6 @@
           <i class="fas fa-bars"></i>
         </button>
         
-       
         <div class="header-actions">
           <div class="header-action" id="themeToggle">
             <i class="fas fa-moon"></i>
@@ -1407,7 +1434,7 @@
         </div>
       </div>
       <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1600857062245-1f87fd46f857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Inherb Hair Oil">
+        <img src="IMAGE.png" alt="Inherb Hair Oil">
       </div>
     </div>
   </section>
@@ -1424,7 +1451,7 @@
       <div class="product-card">
         <span class="product-badge">Best Value</span>
         <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1600857062245-1f87fd46f857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Single Bottle">
+          <img src="image1.png.png" alt="Single Bottle">
         </div>
         <div class="product-info">
           <h3 class="product-title">Inherb Hair Oil (120ml) - Single Bottle</h3>
@@ -1458,7 +1485,7 @@
       <div class="product-card">
         <span class="product-badge">Popular</span>
         <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Two Bottles">
+          <img src="image2.jpeg" alt="Two Bottles">
         </div>
         <div class="product-info">
           <h3 class="product-title">Inherb Hair Oil (120ml) - Two Bottles</h3>
@@ -1492,7 +1519,7 @@
       <div class="product-card">
         <span class="product-badge">Best Deal</span>
         <div class="product-image">
-          <img src="https://images.unsplash.com/photo-1631729371254-42c2892c93d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Three Bottles">
+          <img src="image3.png" alt="Three Bottles">
         </div>
         <div class="product-info">
           <h3 class="product-title">Inherb Hair Oil (120ml) - Three Bottles</h3>
@@ -1630,7 +1657,7 @@
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Customer">
+              <img src="https://th.bing.com/th?id=OIF.v70YA8%2fqejUSlzlt%2fg3kBw&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Customer">
             </div>
             <div class="author-info">
               <h4>Ayesha Khan</h4>
@@ -1645,7 +1672,7 @@
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="Customer">
+              <img src="https://th.bing.com/th/id/R.94b0b27684a42bbe05f5f7226e968d01?rik=yhf%2fi4YODQ63DQ&pid=ImgRaw&r=0" alt="Customer">
             </div>
             <div class="author-info">
               <h4>Ahmed Raza</h4>
@@ -1660,7 +1687,7 @@
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Customer">
+              <img src="https://photosnow.org/wp-content/uploads/2024/04/20_cute-girl-pic-576x1024.jpg" alt="Customer">
             </div>
             <div class="author-info">
               <h4>Fatima Ali</h4>
@@ -1756,68 +1783,63 @@
       </button>
     </div>
   </div>
-
-  <!-- Checkout Modal -->
-  <div class="checkout-modal" id="checkoutModal">
-    <div class="checkout-content">
-      <div class="checkout-header">
-        <h3>Complete Your Order</h3>
-        <button class="close-checkout" id="closeCheckout">
-          <i class="fas fa-times"></i>
-        </button>
-      </div>
-      
-      <form id="checkoutForm" action="https://formspree.io/f/mabcdxyz" method="POST">
-        <input type="hidden" name="order_details" id="orderDetails">
-        <input type="hidden" name="order_total" id="orderTotal">
-        
-        <div class="form-group">
-          <label for="customerName">Full Name *</label>
-          <input type="text" id="customerName" name="name" class="form-control" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="customerPhone">Phone Number *</label>
-          <input type="tel" id="customerPhone" name="phone" class="form-control" required>
-        </div>
-        
-        <div class="form-group">
-          <label for="customerEmail">Email Address</label>
-          <input type="email" id="customerEmail" name="email" class="form-control">
-        </div>
-        
-        <div class="form-group">
-          <label for="customerAddress">Delivery Address *</label>
-          <textarea id="customerAddress" name="address" class="form-control" rows="3" required></textarea>
-        </div>
-        
-        <div class="form-group">
-          <label for="customerCity">City *</label>
-          <input type="text" id="customerCity" name="city" class="form-control" required>
-        </div>
-        
-        <div class="checkout-summary">
-          <h4>Order Summary</h4>
-          <div id="checkoutSummary">
-            <!-- Order summary will be dynamically added here -->
-          </div>
-          <div class="summary-item summary-total">
-            <span>Total:</span>
-            <span id="checkoutTotal">₨0</span>
-          </div>
-        </div>
-        
-        <button type="submit" class="btn-primary" style="width: 100%;" id="submitOrder">
-          <i class="fas fa-paper-plane"></i> Place Order
-        </button>
-        
-        <div id="formLoading" style="display: none;">
-          <div class="spinner"></div>
-          <p style="text-align: center;">Processing your order...</p>
-        </div>
-      </form>
+<!-- Checkout Modal -->
+<div class="checkout-modal" id="checkoutModal">
+  <div class="checkout-content">
+    <div class="checkout-header">
+      <h3>Complete Your Order</h3>
+      <button class="close-checkout" id="closeCheckout">
+        <i class="fas fa-times"></i>
+      </button>
     </div>
+
+    <!-- ✅ Fixed Formspree Action URL -->
+    <form id="checkoutForm" action="https://formspree.io/f/mblpgzgz" method="POST">
+      <input type="hidden" name="order_details" id="orderDetails">
+      <input type="hidden" name="order_total" id="orderTotal">
+
+      <div class="form-group">
+        <label for="customerName">Full Name *</label>
+        <input type="text" id="customerName" name="name" class="form-control" required>
+      </div>
+
+      <div class="form-group">
+        <label for="customerPhone">Phone Number *</label>
+        <input type="tel" id="customerPhone" name="phone" class="form-control" required>
+      </div>
+
+     
+
+      <div class="form-group">
+        <label for="customerAddress">Delivery Address *</label>
+        <textarea id="customerAddress" name="address" class="form-control" rows="3" required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="customerCity">City *</label>
+        <input type="text" id="customerCity" name="city" class="form-control" required>
+      </div>
+
+      <div class="checkout-summary">
+        <h4>Order Summary</h4>
+        <div id="checkoutSummary"></div>
+        <div class="summary-item summary-total">
+          <span>Total:</span>
+          <span id="checkoutTotal">₨0</span>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-primary" style="width: 100%;" id="submitOrder">
+        <i class="fas fa-paper-plane"></i> Place Order
+      </button>
+
+      <div id="formLoading" style="display: none;">
+        <div class="spinner"></div>
+        <p style="text-align: center;">Processing your order...</p>
+      </div>
+    </form>
   </div>
+</div>
 
   <!-- Overlay -->
   <div class="overlay" id="overlay"></div>
@@ -1838,8 +1860,11 @@
         <span>Offers</span>
       </a>
       <a href="#cartToggle" class="mobile-nav-item" id="mobileCartBtn">
-        <i class="fas fa-shopping-cart"></i>
+       <span class="cart-count2">0</span>
+
+        <i class="fas fa-shopping-cart"> </i>
         <span>Cart</span>
+        
       </a>
       <a href="#accountBtn" class="mobile-nav-item" id="mobileAccountBtn">
         <i class="fas fa-user"></i>
@@ -1905,6 +1930,7 @@
     // Shopping Cart Functionality
     let cart = [];
     const cartCount = document.querySelector('.cart-count');
+    const cartCount2 = document.querySelector('.cart-count2');
     const cartItems = document.getElementById('cartItems');
     const cartTotal = document.getElementById('cartTotal');
     const cartSidebar = document.getElementById('cartSidebar');
@@ -2008,58 +2034,51 @@
       checkoutModal.classList.remove('active');
       overlay.classList.remove('active');
     });
+// Checkout Form Submission with Formspree
+checkoutForm.addEventListener('submit', async (e) => {
+  e.preventDefault();
 
-    // Checkout Form Submission with Formspree
-    checkoutForm.addEventListener('submit', async (e) => {
-      e.preventDefault();
-      
-      // Show loading state
-      submitOrder.style.display = 'none';
-      formLoading.style.display = 'block';
-      
-      // Prepare order details for Formspree
-      const orderItems = cart.map(item => 
-        `${item.name} (x${item.quantity}) - ₨${item.price * item.quantity}`
-      ).join(', ');
-      
-      orderDetails.value = orderItems;
-      orderTotal.value = `₨${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}`;
-      
-      try {
-        const formData = new FormData(checkoutForm);
-        
-        const response = await fetch(checkoutForm.action, {
-          method: 'POST',
-          body: formData,
-          headers: {
-            'Accept': 'application/json'
-          }
-        });
-        
-        if (response.ok) {
-          showNotification('Order placed successfully! We will contact you soon.');
-          
-          // Reset cart and close modals
-          cart = [];
-          updateCart();
-          checkoutModal.classList.remove('active');
-          cartSidebar.classList.remove('active');
-          overlay.classList.remove('active');
-          
-          // Reset form
-          checkoutForm.reset();
-        } else {
-          throw new Error('Form submission failed');
-        }
-      } catch (error) {
-        showNotification('There was an error placing your order. Please try again or contact us directly.');
-        console.error('Form submission error:', error);
-      } finally {
-        // Reset loading state
-        submitOrder.style.display = 'block';
-        formLoading.style.display = 'none';
-      }
+  // Show loading animation
+  submitOrder.style.display = 'none';
+  formLoading.style.display = 'block';
+
+  // Prepare order details for Formspree
+  const orderItems = cart.map(item =>
+    `${item.name} (x${item.quantity}) - ₨${item.price * item.quantity}`
+  ).join(', ');
+
+  orderDetails.value = orderItems;
+  orderTotal.value = `₨${cart.reduce((sum, item) => sum + (item.price * item.quantity), 0)}`;
+
+  try {
+    const formData = new FormData(checkoutForm);
+    const response = await fetch(checkoutForm.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
     });
+
+    if (response.ok) {
+      showNotification('✅ Order placed successfully! We’ll contact you soon.');
+
+      // Reset everything
+      cart = [];
+      updateCart();
+      checkoutModal.classList.remove('active');
+      overlay.classList.remove('active');
+      checkoutForm.reset();
+    } else {
+      throw new Error('Form submission failed');
+    }
+  } catch (error) {
+    showNotification('❌ Error sending order. Please try again later.');
+    console.error('Order Error:', error);
+  } finally {
+    submitOrder.style.display = 'block';
+    formLoading.style.display = 'none';
+  }
+});
+
 
     // Add to Cart Function
     function addToCart(id, name, price, image) {
@@ -2107,6 +2126,7 @@
       // Update cart count
       const totalItems = cart.reduce((total, item) => total + item.quantity, 0);
       cartCount.textContent = totalItems;
+      cartCount2.textContent = totalItems;
       
       // Update cart items
       if (cart.length === 0) {
