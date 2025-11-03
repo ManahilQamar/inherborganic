@@ -8,8 +8,8 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
-      --primary: #134932;
-      --primary-dark: #0e6942;
+      --primary: #3a7b5c;
+      --primary-dark: #2a5a44;
       --secondary: #f8f9fa;
       --accent: #ff6b35;
       --text: #333;
@@ -21,8 +21,8 @@
     }
 
     [data-theme="dark"] {
-      --primary: #13472e;
-      --primary-dark: #0d3f26;
+      --primary: #4caf7d;
+      --primary-dark: #3a8c63;
       --secondary: #1e1e1e;
       --accent: #ff8c5a;
       --text: #f5f5f5;
@@ -47,6 +47,7 @@
       color: var(--text);
       line-height: 1.6;
       transition: var(--transition);
+      overflow-x: hidden;
     }
 
     [data-theme="dark"] body {
@@ -60,18 +61,36 @@
       padding: 0 15px;
     }
 
+    /* DotGrid Background */
+    .dot-grid-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: -1;
+      pointer-events: none;
+    }
+
+    .dot-grid__canvas {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
     /* Header Styles */
     .site-header {
-      background: white;
+      background: rgba(255, 255, 255, 0.9);
       box-shadow: var(--shadow);
       position: sticky;
       top: 0;
       z-index: 1000;
       transition: var(--transition);
+      backdrop-filter: blur(10px);
     }
 
     [data-theme="dark"] .site-header {
-      background: #1e1e1e;
+      background: rgba(30, 30, 30, 0.9);
     }
 
     .header-top {
@@ -222,6 +241,18 @@
       position: relative;
     }
 
+    /* Navigation - Nishat Style */
+    .main-nav {
+      background: rgba(248, 249, 250, 0.9);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(10px);
+    }
+
+    [data-theme="dark"] .main-nav {
+      background: rgba(37, 37, 37, 0.9);
+    }
+
     .nav-links {
       display: flex;
       list-style: none;
@@ -229,14 +260,14 @@
     }
 
     .nav-links li {
-      margin-right: 15px;
+      margin-right: 25px;
+      position: relative;
     }
 
     .nav-links a {
       text-decoration: none;
       color: var(--text);
-      font-weight: 400;
-      font-size: 15px;
+      font-weight: 500;
       transition: var(--transition);
       display: flex;
       align-items: center;
@@ -245,6 +276,44 @@
 
     .nav-links a:hover {
       color: var(--primary);
+    }
+
+    /* Dropdown Menu */
+    .dropdown-menu {
+      position: absolute;
+      top: 100%;
+      left: 0;
+      background: white;
+      min-width: 200px;
+      box-shadow: var(--shadow);
+      border-radius: var(--radius);
+      padding: 10px 0;
+      z-index: 100;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(10px);
+      transition: var(--transition);
+    }
+
+    [data-theme="dark"] .dropdown-menu {
+      background: #1e1e1e;
+    }
+
+    .nav-links li:hover .dropdown-menu {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    .dropdown-menu li {
+      margin: 0;
+      width: 100%;
+    }
+
+    .dropdown-menu a {
+      padding: 10px 20px;
+      display: block;
+      width: 100%;
     }
 
     .mobile-menu-btn {
@@ -258,13 +327,14 @@
 
     /* Hero Section */
     .hero {
-      background: linear-gradient(135deg, #f8fff9, #e7ffe8);
+      background: linear-gradient(135deg, rgba(248, 255, 249, 0.9), rgba(231, 255, 232, 0.9));
       padding: 40px 0;
       height: 85vh;
+      position: relative;
     }
 
     [data-theme="dark"] .hero {
-      background: linear-gradient(135deg, #1a2a1f, #0f1a12);
+      background: linear-gradient(135deg, rgba(26, 42, 31, 0.9), rgba(15, 26, 18, 0.9));
     }
 
     .hero .container {
@@ -273,6 +343,8 @@
       padding: 10px;
       justify-content: space-between;
       gap: 40px;
+      position: relative;
+      z-index: 1;
     }
 
     .hero-content {
@@ -320,6 +392,8 @@
     /* Products Section */
     .products-section {
       padding: 60px 0;
+      position: relative;
+      z-index: 1;
     }
 
     .section-title {
@@ -347,16 +421,17 @@
     }
 
     .product-card {
-      background: white;
+      background: rgba(255, 255, 255, 0.9);
       border-radius: var(--radius);
       overflow: hidden;
       box-shadow: var(--shadow);
       transition: var(--transition);
       position: relative;
+      backdrop-filter: blur(10px);
     }
 
     [data-theme="dark"] .product-card {
-      background: #1e1e1e;
+      background: rgba(30, 30, 30, 0.9);
     }
 
     .product-card:hover {
@@ -384,7 +459,8 @@
       align-items: center;
       justify-content: center;
       background: #f9f9f9;
-        padding: 0; 
+        padding: 10px; /* Reduced padding */
+
     }
 
     [data-theme="dark"] .product-image {
@@ -392,11 +468,11 @@
     }
 
     .product-image img {
-     width: 100%; 
-     height: 100%;
-     object-fit: cover;
-     transition: var(--transition);
-}
+      max-width: 120%;
+      max-height: 120%;
+      object-fit: contain;
+      transition: var(--transition);
+    }
 
     .product-card:hover .product-image img {
       transform: scale(1.05);
@@ -671,7 +747,10 @@
     /* Offers Section */
     .offers-section {
       padding: 60px 0;
-      background: var(--secondary);
+      background: rgba(248, 249, 250, 0.9);
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(10px);
     }
 
     .offers-grid {
@@ -834,11 +913,13 @@
       to { transform: translateX(0); opacity: 1; }
     }
 
-    /* Footer */
+    /* Footer - Nishat Style */
     .site-footer {
-      background: #163314;
+      background: #2c3e50;
       color: white;
       padding: 50px 0 20px;
+      position: relative;
+      z-index: 1;
     }
 
     .footer-content {
@@ -915,6 +996,114 @@
       font-size: 0.9rem;
     }
 
+    /* Newsletter Section */
+    .newsletter-section {
+      background: var(--primary);
+      color: white;
+      padding: 40px 0;
+      text-align: center;
+      position: relative;
+      z-index: 1;
+    }
+
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .newsletter-content h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+
+    .newsletter-content p {
+      margin-bottom: 25px;
+      opacity: 0.9;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 12px 15px;
+      border: none;
+      border-radius: var(--radius) 0 0 var(--radius);
+      font-size: 1rem;
+    }
+
+    .newsletter-form button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0 25px;
+      border-radius: 0 var(--radius) var(--radius) 0;
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .newsletter-form button:hover {
+      background: #e55a2b;
+    }
+
+    /* Instagram Grid Section */
+    .instagram-section {
+      padding: 60px 0;
+      position: relative;
+      z-index: 1;
+    }
+
+    .instagram-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .instagram-item {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 1;
+    }
+
+    .instagram-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: var(--transition);
+    }
+
+    .instagram-item:hover img {
+      transform: scale(1.05);
+    }
+
+    .instagram-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: var(--transition);
+    }
+
+    .instagram-item:hover .instagram-overlay {
+      opacity: 1;
+    }
+
+    .instagram-overlay i {
+      color: white;
+      font-size: 1.5rem;
+    }
+
     /* Overlay */
     .overlay {
       position: fixed;
@@ -951,7 +1140,10 @@
     /* Testimonials Section */
     .testimonials-section {
       padding: 60px 0;
-      background: var(--secondary);
+      background: rgba(248, 249, 250, 0.9);
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(10px);
     }
 
     .testimonials-grid {
@@ -1014,6 +1206,8 @@
     /* About Section */
     .about-section {
       padding: 60px 0;
+      position: relative;
+      z-index: 1;
     }
 
     .about-content {
@@ -1054,7 +1248,10 @@
     /* FAQ Section */
     .faq-section {
       padding: 60px 0;
-      background: var(--secondary);
+      background: rgba(248, 249, 250, 0.9);
+      position: relative;
+      z-index: 1;
+      backdrop-filter: blur(10px);
     }
 
     .faq-item {
@@ -1256,11 +1453,11 @@
       }
 
       .hero-content h1 {
-        font-size: 2.2rem;
+        fontSize: 2.2rem;
       }
 
       .hero-content p {
-        font-size: 1.1rem;
+        fontSize: 1.1rem;
       }
 
       .mobile-bottom-nav {
@@ -1274,21 +1471,35 @@
       .testimonials-grid {
         grid-template-columns: 1fr;
       }
+
+      .newsletter-form {
+        flex-direction: column;
+      }
+
+      .newsletter-form input {
+        border-radius: var(--radius);
+        margin-bottom: 10px;
+      }
+
+      .newsletter-form button {
+        border-radius: var(--radius);
+        padding: 12px;
+      }
     }
 
     @media (max-width: 576px) {
       .hero-content h1 {
-        font-size: 1.8rem;
+        fontSize: 1.8rem;
       }
 
       .hero-content p {
-        font-size: 1rem;
+        fontSize: 1rem;
       }
   .cart-count2{
         right: 150px;
       }
       .section-title {
-        font-size: 1.5rem;
+        fontSize: 1.5rem;
         flex-direction: column;
         align-items: flex-start;
         gap: 10px;
@@ -1330,7 +1541,7 @@ display: none;
       }
 
       .hero-badge {
-        font-size: 0.8rem;
+        fontSize: 0.8rem;
       }
         .cart-count2{
         right: 100px;
@@ -1338,19 +1549,24 @@ display: none;
 
       .btn-primary, .btn-secondary {
         padding: 8px 12px;
-        font-size: 0.9rem;
+        fontSize: 0.9rem;
       }
 
-      
+      .mobile-nav-item span {
+        display: none;
+      }
 
       .mobile-nav-item i {
         margin-bottom: 0;
-        font-size: 1.5rem;
+        fontSize: 1.5rem;
       }
     }
   </style>
 </head>
 <body>
+  <!-- DotGrid Background -->
+  <div class="dot-grid-background" id="dotGridBackground"></div>
+
   <!-- Header -->
   <header class="site-header">
     <div class="header-top">
@@ -1367,15 +1583,9 @@ display: none;
     
     <div class="header-main">
       <div class="container">
-         <ul class="nav-links" id="navLinks">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#products">Products</a></li>
-          <li><a href="#offers">Offers</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
         <div class="brand">
           <i class="fas fa-leaf"></i>
-          <span>Inherb.Organics</span>
+          <span>Inherb</span>
         </div>
         
         <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1398,9 +1608,29 @@ display: none;
           </div>
         </div>
       </div>
-    
-    
     </div>
+    
+    <nav class="main-nav">
+      <div class="container">
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home">Home</a></li>
+          <li>
+            <a href="#products">Products <i class="fas fa-chevron-down"></i></a>
+            <ul class="dropdown-menu">
+              <li><a href="#single">Single Bottle</a></li>
+              <li><a href="#two-bottles">Two Bottles</a></li>
+              <li><a href="#three-bottles">Three Bottles</a></li>
+              <li><a href="#hair-care-kit">Hair Care Kit</a></li>
+            </ul>
+          </li>
+          <li><a href="#offers">Offers</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#testimonials">Testimonials</a></li>
+          <li><a href="#faq">FAQ</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </nav>
   </header>
 
   <!-- Hero Section -->
@@ -1437,7 +1667,7 @@ display: none;
       <div class="product-card">
         <span class="product-badge">Best Value</span>
         <div class="product-image">
-          <img src="heroimage.png" alt="Single Bottle">
+          <img src="image1.png.png" alt="Single Bottle">
         </div>
         <div class="product-info">
           <h3 class="product-title">Inherb Hair Oil (120ml) - Single Bottle</h3>
@@ -1452,12 +1682,12 @@ display: none;
             <span class="rating-count">(128)</span>
           </div>
           <div class="product-price">
-            <span class="current-price">₨1200</span>
-            <span class="original-price">₨1500</span>
-            <span class="discount">20% OFF</span>
+            <span class="current-price">₨999</span>
+            <span class="original-price">₨1200</span>
+            <span class="discount">17% OFF</span>
           </div>
           <div class="product-actions">
-            <button class="btn-secondary add-to-cart" data-id="1" data-name="Inherb Hair Oil (120ml) - Single Bottle" data-price="1200" data-image="https://images.unsplash.com/photo-1600857062245-1f87fd46f857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80">
+            <button class="btn-secondary add-to-cart" data-id="1" data-name="Inherb Hair Oil (120ml) - Single Bottle" data-price="999" data-image="https://images.unsplash.com/photo-1600857062245-1f87fd46f857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80">
               <i class="fas fa-cart-plus"></i> Add
             </button>
             <button class="btn-primary buy-now" data-id="1">
@@ -1486,9 +1716,9 @@ display: none;
             <span class="rating-count">(64)</span>
           </div>
           <div class="product-price">
-            <span class="current-price">₨2300</span>
-            <span class="original-price">₨3000</span>
-            <span class="discount">23% OFF</span>
+            <span class="current-price">₨1798</span>
+            <span class="original-price">₨2400</span>
+            <span class="discount">25% OFF</span>
           </div>
           <div class="product-actions">
             <button class="btn-secondary add-to-cart" data-id="2" data-name="Inherb Hair Oil (120ml) - Two Bottles" data-price="1798" data-image="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80">
@@ -1535,8 +1765,36 @@ display: none;
         </div>
       </div>
       
-     
-        
+      <!-- Product 4 -->
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1594736797933-d0ea3ff8db41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80" alt="Hair Care Kit">
+        </div>
+        <div class="product-info">
+          <h3 class="product-title">Inherb Hair Care Complete Kit</h3>
+          <div class="product-rating">
+            <div class="stars">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </div>
+            <span class="rating-count">(36)</span>
+          </div>
+          <div class="product-price">
+            <span class="current-price">₨3499</span>
+            <span class="original-price">₨4500</span>
+            <span class="discount">22% OFF</span>
+          </div>
+          <div class="product-actions">
+            <button class="btn-secondary add-to-cart" data-id="4" data-name="Inherb Hair Care Complete Kit" data-price="3499" data-image="https://images.unsplash.com/photo-1594736797933-d0ea3ff8db41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80">
+              <i class="fas fa-cart-plus"></i> Add
+            </button>
+            <button class="btn-primary buy-now" data-id="4">
+              <i class="fas fa-bolt"></i> Buy
+            </button>
+          </div>
         </div>
       </div>
     </div>
@@ -1553,7 +1811,7 @@ display: none;
             <i class="fas fa-shipping-fast"></i>
           </div>
           <h3>Free Shipping</h3>
-          <p>Free shipping on all orders above ₨3000 across Pakistan</p>
+          <p>Free shipping on all orders above ₨1500 across Pakistan</p>
         </div>
         
         <div class="offer-card">
@@ -1564,7 +1822,14 @@ display: none;
           <p>Get up to 33% OFF when you buy multiple bottles</p>
         </div>
         
-
+        <div class="offer-card">
+          <div class="offer-icon">
+            <i class="fas fa-undo"></i>
+          </div>
+          <h3>Easy Returns</h3>
+          <p>30-day return policy if you're not satisfied</p>
+        </div>
+        
         <div class="offer-card">
           <div class="offer-icon">
             <i class="fas fa-headset"></i>
@@ -1572,6 +1837,64 @@ display: none;
           <h3>24/7 Support</h3>
           <p>Our customer support team is always here to help</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instagram Style Grid -->
+  <section class="instagram-section container">
+    <h2 class="section-title">#InherbHairCare</h2>
+    
+    <div class="instagram-grid">
+      <div class="instagram-item">
+        <img src="https://images.unsplash.com/photo-1608248543803-ba4f8c70ae0b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Hair Care">
+        <div class="instagram-overlay">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://images.unsplash.com/photo-1600857062245-1f87fd46f857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Natural Ingredients">
+        <div class="instagram-overlay">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://images.unsplash.com/photo-1631729371254-42c2892c93d5?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Healthy Hair">
+        <div class="instagram-overlay">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://images.unsplash.com/photo-1594736797933-d0ea3ff8db41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Hair Oil">
+        <div class="instagram-overlay">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://images.unsplash.com/photo-1596704014070-e9b5c4e5f3c8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Herbal Products">
+        <div class="instagram-overlay">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+      <div class="instagram-item">
+        <img src="https://images.unsplash.com/photo-1594736797933-d0ea3ff8db41?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=500&q=80" alt="Natural Beauty">
+        <div class="instagram-overlay">
+          <i class="fab fa-instagram"></i>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Newsletter Section -->
+  <section class="newsletter-section">
+    <div class="container">
+      <div class="newsletter-content">
+        <h3>Subscribe to Our Newsletter</h3>
+        <p>Stay updated with our latest products, offers, and hair care tips.</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Your email address" required>
+          <button type="submit">Subscribe</button>
+        </form>
       </div>
     </div>
   </section>
@@ -1734,95 +2057,65 @@ display: none;
       </button>
     </div>
   </div>
-<!-- Checkout Modal -->
-<div class="checkout-modal" id="checkoutModal">
-  <div class="checkout-content">
-    <div class="checkout-header">
-      <h3>Complete Your Order</h3>
-      <button class="close-checkout" id="closeCheckout">
-        <i class="fas fa-times"></i>
-      </button>
-    </div>
 
-    <!-- ✅ Fixed Formspree Action URL -->
-    <form id="checkoutForm" action="https://formspree.io/f/mblpgzgz" method="POST">
-      <input type="hidden" name="order_details" id="orderDetails">
-      <input type="hidden" name="order_total" id="orderTotal">
-
-      <div class="form-group">
-        <label for="customerName">Full Name *</label>
-        <input type="text" id="customerName" name="name" class="form-control" required>
+  <!-- Checkout Modal -->
+  <div class="checkout-modal" id="checkoutModal">
+    <div class="checkout-content">
+      <div class="checkout-header">
+        <h3>Complete Your Order</h3>
+        <button class="close-checkout" id="closeCheckout">
+          <i class="fas fa-times"></i>
+        </button>
       </div>
 
-      <div class="form-group">
-        <label for="customerPhone">Phone Number *</label>
-        <input type="tel" id="customerPhone" name="phone" class="form-control" required>
-      </div>
+      <!-- ✅ Fixed Formspree Action URL -->
+      <form id="checkoutForm" action="https://formspree.io/f/mblpgzgz" method="POST">
+        <input type="hidden" name="order_details" id="orderDetails">
+        <input type="hidden" name="order_total" id="orderTotal">
 
-     
-
-      <div class="form-group">
-        <label for="customerAddress">Delivery Address *</label>
-        <textarea id="customerAddress" name="address" class="form-control" rows="3" required></textarea>
-      </div>
-
-      <div class="form-group">
-        <label for="customerCity">City *</label>
-        <input type="text" id="customerCity" name="city" class="form-control" required>
-      </div>
-
-      <div class="checkout-summary">
-        <h4>Order Summary</h4>
-        <div id="checkoutSummary"></div>
-        <div class="summary-item summary-total">
-          <span>Total:</span>
-          <span id="checkoutTotal">₨0</span>
+        <div class="form-group">
+          <label for="customerName">Full Name *</label>
+          <input type="text" id="customerName" name="name" class="form-control" required>
         </div>
-      </div>
 
-      <button type="submit" class="btn-primary" style="width: 100%;" id="submitOrder">
-        <i class="fas fa-paper-plane"></i> Place Order
-      </button>
+        <div class="form-group">
+          <label for="customerPhone">Phone Number *</label>
+          <input type="tel" id="customerPhone" name="phone" class="form-control" required>
+        </div>
 
-      <div id="formLoading" style="display: none;">
-        <div class="spinner"></div>
-        <p style="text-align: center;">Processing your order...</p>
-      </div>
-    </form>
+        <div class="form-group">
+          <label for="customerAddress">Delivery Address *</label>
+          <textarea id="customerAddress" name="address" class="form-control" rows="3" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="customerCity">City *</label>
+          <input type="text" id="customerCity" name="city" class="form-control" required>
+        </div>
+
+        <div class="checkout-summary">
+          <h4>Order Summary</h4>
+          <div id="checkoutSummary"></div>
+          <div class="summary-item summary-total">
+            <span>Total:</span>
+            <span id="checkoutTotal">₨0</span>
+          </div>
+        </div>
+
+        <button type="submit" class="btn-primary" style="width: 100%;" id="submitOrder">
+          <i class="fas fa-paper-plane"></i> Place Order
+        </button>
+
+        <div id="formLoading" style="display: none;">
+          <div class="spinner"></div>
+          <p style="text-align: center;">Processing your order...</p>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 
   <!-- Overlay -->
   <div class="overlay" id="overlay"></div>
-
-  <!-- Mobile Bottom Navigation -->
-  <nav class="mobile-bottom-nav">
-    <div class="mobile-nav-items">
-      <a href="#home" class="mobile-nav-item active">
-        <i class="fas fa-home"></i>
-        <span>Home</span>
-      </a>
-      <a href="#products" class="mobile-nav-item">
-        <i class="fas fa-shopping-bag"></i>
-        <span>Products</span>
-      </a>
-      <a href="#offers" class="mobile-nav-item">
-        <i class="fas fa-tag"></i>
-        <span>Offers</span>
-      </a>
-      <a href="#cartToggle" class="mobile-nav-item" id="mobileCartBtn">
-       <span class="cart-count2">0</span>
-
-        <i class="fas fa-shopping-cart"> </i>
-        <span>Cart</span>
-        
-      </a>
-      <a href="#accountBtn" class="mobile-nav-item" id="mobileAccountBtn">
-        <i class="fas fa-user"></i>
-        <span>Account</span>
-      </a>
-    </div>
-  </nav>
 
   <!-- Footer -->
   <footer class="site-footer" id="contact">
@@ -1877,8 +2170,273 @@ display: none;
     </div>
   </footer>
 
+  <!-- Mobile Bottom Navigation -->
+  <nav class="mobile-bottom-nav">
+    <div class="mobile-nav-items">
+      <a href="#home" class="mobile-nav-item active">
+        <i class="fas fa-home"></i>
+        <span>Home</span>
+      </a>
+      <a href="#products" class="mobile-nav-item">
+        <i class="fas fa-shopping-bag"></i>
+        <span>Products</span>
+      </a>
+      <a href="#offers" class="mobile-nav-item">
+        <i class="fas fa-tag"></i>
+        <span>Offers</span>
+      </a>
+      <a href="#cartToggle" class="mobile-nav-item" id="mobileCartBtn">
+       <span class="cart-count2">0</span>
+        <i class="fas fa-shopping-cart"> </i>
+        <span>Cart</span>
+      </a>
+      <a href="#accountBtn" class="mobile-nav-item" id="mobileAccountBtn">
+        <i class="fas fa-user"></i>
+        <span>Account</span>
+      </a>
+    </div>
+  </nav>
+
   <script>
-      // Shopping Cart Functionality
+    // DotGrid Implementation
+    class DotGrid {
+      constructor(container, options = {}) {
+        this.container = container;
+        this.canvas = document.createElement('canvas');
+        this.canvas.className = 'dot-grid__canvas';
+        container.appendChild(this.canvas);
+        this.ctx = this.canvas.getContext('2d');
+        
+        // Default options
+        this.options = {
+          dotSize: options.dotSize || 10,
+          gap: options.gap || 15,
+          baseColor: options.baseColor || '#5227FF',
+          activeColor: options.activeColor || '#5227FF',
+          proximity: options.proximity || 120,
+          shockRadius: options.shockRadius || 250,
+          shockStrength: options.shockStrength || 5,
+          resistance: options.resistance || 750,
+          returnDuration: options.returnDuration || 1.5,
+          ...options
+        };
+        
+        this.dots = [];
+        this.pointer = {
+          x: 0,
+          y: 0,
+          vx: 0,
+          vy: 0,
+          speed: 0,
+          lastTime: 0,
+          lastX: 0,
+          lastY: 0
+        };
+        
+        this.baseRgb = this.hexToRgb(this.options.baseColor);
+        this.activeRgb = this.hexToRgb(this.options.activeColor);
+        
+        this.circlePath = this.createCirclePath();
+        
+        this.init();
+      }
+      
+      hexToRgb(hex) {
+        const m = hex.match(/^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i);
+        if (!m) return { r: 0, g: 0, b: 0 };
+        return {
+          r: parseInt(m[1], 16),
+          g: parseInt(m[2], 16),
+          b: parseInt(m[3], 16)
+        };
+      }
+      
+      createCirclePath() {
+        if (typeof window === 'undefined' || !window.Path2D) return null;
+        const p = new window.Path2D();
+        p.arc(0, 0, this.options.dotSize / 2, 0, Math.PI * 2);
+        return p;
+      }
+      
+      buildGrid() {
+        const { width, height } = this.container.getBoundingClientRect();
+        const dpr = window.devicePixelRatio || 1;
+        
+        this.canvas.width = width * dpr;
+        this.canvas.height = height * dpr;
+        this.canvas.style.width = `${width}px`;
+        this.canvas.style.height = `${height}px`;
+        this.ctx.scale(dpr, dpr);
+        
+        const cols = Math.floor((width + this.options.gap) / (this.options.dotSize + this.options.gap));
+        const rows = Math.floor((height + this.options.gap) / (this.options.dotSize + this.options.gap));
+        const cell = this.options.dotSize + this.options.gap;
+        
+        const gridW = cell * cols - this.options.gap;
+        const gridH = cell * rows - this.options.gap;
+        
+        const extraX = width - gridW;
+        const extraY = height - gridH;
+        
+        const startX = extraX / 2 + this.options.dotSize / 2;
+        const startY = extraY / 2 + this.options.dotSize / 2;
+        
+        this.dots = [];
+        for (let y = 0; y < rows; y++) {
+          for (let x = 0; x < cols; x++) {
+            const cx = startX + x * cell;
+            const cy = startY + y * cell;
+            this.dots.push({ cx, cy, xOffset: 0, yOffset: 0, _inertiaApplied: false });
+          }
+        }
+      }
+      
+      draw() {
+        this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        
+        const { x: px, y: py } = this.pointer;
+        const proxSq = this.options.proximity * this.options.proximity;
+        
+        for (const dot of this.dots) {
+          const ox = dot.cx + dot.xOffset;
+          const oy = dot.cy + dot.yOffset;
+          const dx = dot.cx - px;
+          const dy = dot.cy - py;
+          const dsq = dx * dx + dy * dy;
+          
+          let style = this.options.baseColor;
+          if (dsq <= proxSq) {
+            const dist = Math.sqrt(dsq);
+            const t = 1 - dist / this.options.proximity;
+            const r = Math.round(this.baseRgb.r + (this.activeRgb.r - this.baseRgb.r) * t);
+            const g = Math.round(this.baseRgb.g + (this.activeRgb.g - this.baseRgb.g) * t);
+            const b = Math.round(this.baseRgb.b + (this.activeRgb.b - this.baseRgb.b) * t);
+            style = `rgb(${r},${g},${b})`;
+          }
+          
+          this.ctx.save();
+          this.ctx.translate(ox, oy);
+          this.ctx.fillStyle = style;
+          this.ctx.fill(this.circlePath);
+          this.ctx.restore();
+        }
+      }
+      
+      handlePointerMove(e) {
+        const now = performance.now();
+        const dt = this.pointer.lastTime ? now - this.pointer.lastTime : 16;
+        
+        const rect = this.canvas.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        
+        const dx = x - this.pointer.lastX;
+        const dy = y - this.pointer.lastY;
+        
+        let vx = (dx / dt) * 1000;
+        let vy = (dy / dt) * 1000;
+        let speed = Math.hypot(vx, vy);
+        
+        this.pointer.lastTime = now;
+        this.pointer.lastX = x;
+        this.pointer.lastY = y;
+        this.pointer.vx = vx;
+        this.pointer.vy = vy;
+        this.pointer.speed = speed;
+        this.pointer.x = x;
+        this.pointer.y = y;
+      }
+      
+      handleClick(e) {
+        const rect = this.canvas.getBoundingClientRect();
+        const cx = e.clientX - rect.left;
+        const cy = e.clientY - rect.top;
+        
+        for (const dot of this.dots) {
+          const dist = Math.hypot(dot.cx - cx, dot.cy - cy);
+          if (dist < this.options.shockRadius && !dot._inertiaApplied) {
+            dot._inertiaApplied = true;
+            
+            const falloff = Math.max(0, 1 - dist / this.options.shockRadius);
+            const pushX = (dot.cx - cx) * this.options.shockStrength * falloff;
+            const pushY = (dot.cy - cy) * this.options.shockStrength * falloff;
+            
+            this.animateDot(dot, pushX, pushY);
+          }
+        }
+      }
+      
+      animateDot(dot, pushX, pushY) {
+        // Simple animation without GSAP
+        const startTime = performance.now();
+        const duration = this.options.returnDuration * 1000;
+        
+        const animate = (currentTime) => {
+          const elapsed = currentTime - startTime;
+          const progress = Math.min(elapsed / duration, 1);
+          
+          // Elastic out easing
+          const elasticProgress = 1 - Math.pow(2, -10 * progress) * Math.cos(progress * Math.PI * 2 / 0.3);
+          
+          dot.xOffset = pushX * (1 - elasticProgress);
+          dot.yOffset = pushY * (1 - elasticProgress);
+          
+          if (progress < 1) {
+            requestAnimationFrame(animate);
+          } else {
+            dot.xOffset = 0;
+            dot.yOffset = 0;
+            dot._inertiaApplied = false;
+          }
+        };
+        
+        requestAnimationFrame(animate);
+      }
+      
+      init() {
+        this.buildGrid();
+        
+        // Throttled mousemove handler
+        let lastCall = 0;
+        const throttledMove = (e) => {
+          const now = performance.now();
+          if (now - lastCall >= 50) {
+            lastCall = now;
+            this.handlePointerMove(e);
+          }
+        };
+        
+        // Event listeners
+        window.addEventListener('mousemove', throttledMove, { passive: true });
+        window.addEventListener('click', (e) => this.handleClick(e));
+        window.addEventListener('resize', () => this.buildGrid());
+        
+        // Animation loop
+        const animate = () => {
+          this.draw();
+          requestAnimationFrame(animate);
+        };
+        animate();
+      }
+    }
+
+    // Initialize DotGrid
+    document.addEventListener('DOMContentLoaded', () => {
+      const dotGridContainer = document.getElementById('dotGridBackground');
+      const dotGrid = new DotGrid(dotGridContainer, {
+        dotSize: 10,
+        gap: 15,
+        baseColor: '#5227FF',
+        activeColor: '#5227FF',
+        proximity: 120,
+        shockRadius: 250,
+        shockStrength: 5,
+        resistance: 750,
+        returnDuration: 1.5
+      });
+    });
+
+    // Shopping Cart Functionality
     let cart = [];
     const cartCount = document.querySelector('.cart-count');
     const cartCount2 = document.querySelector('.cart-count2');
@@ -2011,7 +2569,7 @@ display: none;
         });
 
         if (response.ok) {
-          showNotification('✅ Order placed successfully! We\'ll contact you soon.');
+          showNotification('✅ Order placed successfully! Well contact you soon.');
 
           // Reset everything
           cart = [];
@@ -2164,13 +2722,14 @@ display: none;
       });
     });
 
-    // Add event listeners to Buy Now buttons - FIXED
+    // Add event listeners to Buy Now buttons
     buyNowButtons.forEach(button => {
       button.addEventListener('click', () => {
         const id = button.getAttribute('data-id');
-        const name = button.getAttribute('data-name');
-        const price = button.getAttribute('data-price');
-        const image = button.getAttribute('data-image');
+        const productCard = button.closest('.product-card');
+        const name = productCard.querySelector('.product-title').textContent;
+        const price = productCard.querySelector('.current-price').textContent.replace('₨', '');
+        const image = productCard.querySelector('img').src;
         
         // Clear cart and add only this product
         cart = [{
@@ -2189,14 +2748,14 @@ display: none;
 
     // Hero Section Buttons
     heroAddToCart.addEventListener('click', () => {
-      addToCart(1, 'Inherb Hair Oil (120ml) - Single Bottle', 1200, 'https://images.unsplash.com/photo-1600857062245-1f87fd46f857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80');
+      addToCart(1, 'Inherb Hair Oil (120ml) - Single Bottle', 999, 'https://images.unsplash.com/photo-1600857062245-1f87fd46f857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80');
     });
 
     heroBuyNow.addEventListener('click', () => {
       cart = [{
         id: 1,
         name: 'Inherb Hair Oil (120ml) - Single Bottle',
-        price: 1200,
+        price: 999,
         image: 'https://images.unsplash.com/photo-1600857062245-1f87fd46f857?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=300&q=80',
         quantity: 1
       }];
@@ -2204,47 +2763,6 @@ display: none;
       updateCart();
       cartSidebar.classList.add('active');
       overlay.classList.add('active');
-    });
-
-    // Search Functionality
-    searchBtn.addEventListener('click', () => {
-      const searchTerm = searchInput.value.trim();
-      if (searchTerm) {
-        showNotification(`Searching for: ${searchTerm}`);
-        // In a real application, you would filter products here
-      }
-    });
-
-    searchInput.addEventListener('keypress', (e) => {
-      if (e.key === 'Enter') {
-        searchBtn.click();
-      }
-    });
-
-    // Other Button Functionality
-    viewAllProducts.addEventListener('click', (e) => {
-      e.preventDefault();
-      showNotification('Showing all products');
-      // In a real application, you would load more products here
-    });
-
-    accountBtn.addEventListener('click', () => {
-      showNotification('Account management coming soon!');
-    });
-
-    mobileAccountBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      showNotification('Account management coming soon!');
-    });
-
-    trackOrder.addEventListener('click', (e) => {
-      e.preventDefault();
-      showNotification('Order tracking feature coming soon!');
-    });
-
-    wishlistBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      showNotification('Wishlist feature coming soon!');
     });
 
     // FAQ Functionality
