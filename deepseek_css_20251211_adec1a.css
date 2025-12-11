@@ -1,0 +1,8 @@
+/* Hero Section - One Line Responsive */
+.hero {
+  background: url('bg.png') center/cover no-repeat;
+  padding: 10px 0;
+  width: 100%;
+  height: 85vh;
+  max-height: 100vh; /* Maximum height limit */
+}
