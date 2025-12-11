@@ -4,6 +4,9 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Inherb — Premium Herbal Hair Oil | Natural Hair Care</title>
+  <!-- Add in head section -->
+<meta http-equiv="Cache-Control" content="max-age=31536000, public">
+<meta http-equiv="Expires" content="31536000">
   <meta name="description" content="Inherb Hair Oil — 100% natural formula that strengthens hair, reduces hair fall, and adds natural shine. Free shipping across Pakistan.">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -57,7 +60,7 @@
       width: 90%;
       max-width: 1200px;
       margin: 0 auto;
-      padding: 0 15px;
+      padding: 0 1px;
     }
 
     /* Header Styles */
@@ -259,6 +262,7 @@
 
 /* Hero Section - Aspect Ratio Maintain */
 .hero {
+  /* WebP format is much faster */
   background-image: url('bg.png');
   background-size: cover;
   background-position: center;
@@ -266,8 +270,7 @@
   padding: 0;
   margin: 0;
   width: 100%;
-  /* Aspect ratio based approach */
-  aspect-ratio: 16/9; /* Adjust according to your image aspect ratio */
+  aspect-ratio: 16/9;
   max-height: 85vh;
 }
 
@@ -346,11 +349,13 @@
       background: #252525;
     }
 
-    .product-image img {
-     width: 100%; 
-     height: 100%;
-     object-fit: cover;
-     transition: var(--transition);
+   .product-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: var(--transition);
+  /* Add lazy loading */
+  loading: lazy;
 }
 
     .product-card:hover .product-image img {
@@ -578,7 +583,7 @@
     }
 
     .cart-footer {
-      padding: 20px;
+      padding: 40px;
       border-top: 1px solid var(--border);
     }
 
@@ -590,22 +595,25 @@
       font-weight: bold;
     }
 
-    .checkout-btn {
-      width: 100%;
-      padding: 15px;
-      background: var(--primary);
-      color: white;
-      border: none;
-      border-radius: var(--radius);
-      font-size: 1.1rem;
-      font-weight: bold;
-      cursor: pointer;
-      transition: var(--transition);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-    }
+   .checkout-btn {
+  width: 100%;
+  padding: 12px;
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius);
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  
+}
+
 
     .checkout-btn:hover {
       background: var(--primary-dark);
@@ -1308,7 +1316,7 @@ display: none;
           <li><a href="#contact">Contact</a></li>
         </ul>
         <div class="brand">
-          <span><img src="logo.png" alt=""></span>
+          <span><img src="logo.png" alt="" loading="lazy"></span>
         </div>
         
         <button class="mobile-menu-btn" id="mobileMenuBtn">
@@ -1353,7 +1361,7 @@ display: none;
 <div class="product-card">
   <span class="product-badge">Best Value</span>
   <div class="product-image">
-    <img src="heroimage.png" alt="Single Bottle">
+    <img src="heroimage.png" alt="Single Bottle" loading="lazy">
   </div>
   <div class="product-info">
     <h3 class="product-title">Inherb Hair Oil (120ml) - Single Bottle</h3>
@@ -1389,7 +1397,7 @@ display: none;
 <div class="product-card">
   <span class="product-badge">Popular</span>
   <div class="product-image">
-    <img src="shampoo.png" alt="Two Bottles">
+    <img src="shampoo.png" alt="Two Bottles" loading="lazy">
   </div>
   <div class="product-info">
     <h3 class="product-title">Herbal Shampoo (120ml)</h3>
@@ -1425,7 +1433,7 @@ display: none;
 <div class="product-card">
   <span class="product-badge">Popular</span>
   <div class="product-image">
-    <img src="silkCap.png" alt="Two Bottles">
+    <img src="silkCap.png" alt="Two Bottles" loading="lazy">
   </div>
   <div class="product-info">
     <h3 class="product-title">Silk Cap</h3>
@@ -1461,7 +1469,7 @@ display: none;
 <div class="product-card">
   <span class="product-badge">Best Deal</span>
   <div class="product-image">
-    <img src="bondal.png" alt="Three Bottles">
+    <img src="bondal.png" alt="Three Bottles" loading="lazy">
   </div>
   <div class="product-info">
     <h3 class="product-title">Inherb Hair Oil (120ml) - Three Bottles</h3>
@@ -1543,7 +1551,7 @@ display: none;
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="https://th.bing.com/th?id=OIF.v70YA8%2fqejUSlzlt%2fg3kBw&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Customer">
+              <img src="https://th.bing.com/th?id=OIF.v70YA8%2fqejUSlzlt%2fg3kBw&rs=1&pid=ImgDetMain&o=7&rm=3" alt="Customer" loading="lazy">
             </div>
             <div class="author-info">
               <h4>Ayesha Khan</h4>
@@ -1558,7 +1566,7 @@ display: none;
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="https://th.bing.com/th/id/R.94b0b27684a42bbe05f5f7226e968d01?rik=yhf%2fi4YODQ63DQ&pid=ImgRaw&r=0" alt="Customer">
+              <img src="https://th.bing.com/th/id/R.94b0b27684a42bbe05f5f7226e968d01?rik=yhf%2fi4YODQ63DQ&pid=ImgRaw&r=0" alt="Customer" loading="lazy">
             </div>
             <div class="author-info">
               <h4>Ahmed Raza</h4>
@@ -1573,7 +1581,7 @@ display: none;
           </div>
           <div class="testimonial-author">
             <div class="author-avatar">
-              <img src="https://photosnow.org/wp-content/uploads/2024/04/20_cute-girl-pic-576x1024.jpg" alt="Customer">
+              <img src="https://photosnow.org/wp-content/uploads/2024/04/20_cute-girl-pic-576x1024.jpg" alt="Customer" loading="lazy">
             </div>
             <div class="author-info">
               <h4>Fatima Ali</h4>
@@ -1846,6 +1854,20 @@ display: none;
     const mobileCartBtn = document.getElementById('mobileCartBtn');
     const mobileAccountBtn = document.getElementById('mobileAccountBtn');
     const faqItems = document.querySelectorAll('.faq-item');
+    // Add this script before closing body tag
+document.addEventListener('DOMContentLoaded', function() {
+  const images = [
+    'heroimage.png',
+    'shampoo.png',
+    'silkCap.png',
+    'bondal.png'
+  ];
+  
+  images.forEach(src => {
+    const img = new Image();
+    img.src = src;
+  });
+});
 
     // Theme Toggle
     const themeToggle = document.getElementById('themeToggle');
